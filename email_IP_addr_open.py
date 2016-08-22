@@ -40,9 +40,11 @@ def send_mail(to_list, sub, content):
         return False
     
 def get_local_IP():
-    ifconfig  = subprocess.check_output('ifconfig', shell=True)
+    ifconfig  = subprocess.check_output('ifconfig | grep \'inet addr:\'', shell=True)
     ifconfig = str(ifconfig)
-    ipList = re.findall('\d+\.\d+\.\d+\.\d+', ifconfig)
+    ipList = re.findall('inet addr:\d+\.\d+\.\d+\.\d+', ifconfig)
+    ipList = ''.join(ipList)
+    ipList = re.findall('\d+\.\d+\.\d+\.\d+', ipList)
     ipList = "\n".join(ipList)
     return ipList
 
