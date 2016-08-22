@@ -11,11 +11,11 @@ import socket
 
 # In[59]:
 
-MAIL_TO_LIST = ['****@***.****']
-MAIL_HOST = "***.***.***"
-MAIL_USER = '****'
-MAIL_PWD = '*****'
-MAIL_POSTFIX = "***.******"
+MAIL_TO_LIST = ['445631326@qq.com']
+MAIL_HOST = "smtp.163.com"
+MAIL_USER = 'gdga51'
+MAIL_PWD = '135asdfghjkl'
+MAIL_POSTFIX = "163.com"
 
 
 # In[62]:
@@ -64,4 +64,4 @@ if __name__ == '__main__':
 
 
 
-
+
