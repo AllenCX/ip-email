@@ -6,7 +6,7 @@
       
    or /etc/rc.local like this:
        python3 full_path_of_the_script
- '''
+'''
 
 
 import smtplib
