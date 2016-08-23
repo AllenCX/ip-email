@@ -1,7 +1,13 @@
+'''
+   Written by Xiaoyu @ 20160822
+   
+   Add a line to crontab(recommended) like this:
+       0 9 */7 * * full_path/python3 full_path_of_the_script
+      
+   or /etc/rc.local like this:
+       python3 full_path_of_the_script
+ '''
 
-# coding: utf-8
-
-# In[1]:
 
 import smtplib
 from email.mime.text import MIMEText
@@ -12,13 +18,11 @@ from threading import Timer
 import sched,time
 
 
-# In[ ]:
-
-MAIL_TO_LIST = ['xxxxxx@xxx.com']
-MAIL_HOST = "smtp.xxxxx.com"
-MAIL_USER = 'xxxx'
-MAIL_PWD = 'xxxxx'
-MAIL_POSTFIX = "xxx.xxx"
+MAIL_TO_LIST = ['445631326@qq.com']
+MAIL_HOST = "smtp.163.com"
+MAIL_USER = 'gdga51'
+MAIL_PWD = '135asdfghjkl'
+MAIL_POSTFIX = "163.com"
 
 # In[25]:
 
@@ -68,7 +72,7 @@ def assemble_message():
 
 def send_mail_clock(d=0, h=0, m=0, s=30):
     
-    #caculate the interval, interval == 0 means send the message once and quit
+    #caculate the interval, when interval == 0 then send the message only once and exit
     interval = d*24*3600 + h*3600 + m*60 + s
     
     msg = assemble_message()
@@ -91,7 +95,7 @@ def send_mail_clock(d=0, h=0, m=0, s=30):
             
             while(i<20 and SEND_FLAG == False):
                 i += 1
-                time.sleep(10)
+                time.sleep(20)
                 msg = assemble_message()
                 SEND_FLAG = send_mail(MAIL_TO_LIST, sub, msg)
                 #if i < 3: SEND_FLAG = False
@@ -126,6 +130,7 @@ def send_mail_clock(d=0, h=0, m=0, s=30):
 if __name__ == '__main__':
     scheduler = sched.scheduler()
     #run once and quit
+    print('ready to send IP address!')
+    time.sleep(90)
     send_mail_clock(0,0,0,0)
     print('Fuction out!')
-
